@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Firebase_form</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="box">
+            <div class="form">
+                <h2>Login Form</h2>
+                <form>
+                    <div class="inputbox">
+                        <input type="text" value="" id="username" required>
+                        <span>Username Or Phone Number </span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" value="" id="email" required>
+                        <span>E-mail</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" value="" id="phone" required>
+                        <span> Password</span>
+                    </div>
+                    <input type="submit" value="submit" class="sub" id="submit">
+                </form>
+            </div>
+           
+            <script type="module">
+              
+              
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD4gplVbxUiQSIynBqISJ1oE3sYC6en44M",
+    authDomain: "logindb-f2cc8.firebaseapp.com",
+    projectId: "logindb-f2cc8",
+    storageBucket: "logindb-f2cc8.appspot.com",
+    messagingSenderId: "1016680820852",
+    appId: "1:1016680820852:web:7aed043b88f9c6b4b62121"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+
+//get refer to database service 
+const db = getDatabase(app);
+
+document.getElementById("submit").addEventListener('click', function(e){
+  e.preventDefault();
+  set(ref(db, 'user/' + document.getElementById("username").value),{
+    
+    username:document.getElementById("username").value,
+    email:document.getElementById("email").value,
+    
+    PhoneNumber:document.getElementById("phone").value,
+    
+    
+  });
+  
+  
+ alert("Login Successfull !");
+  
+})
+              
+            </script>
+           
+            <script src="log.js"></script>
+        </div>
+        
+    </body>
+</html>
